@@ -1,0 +1,45 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation project(":service")
+
+    // 添加 lombok APT
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    // 添加 Jimmer APT
+    annotationProcessor "org.babyfish.jimmer:jimmer-apt:${jimmerVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation "com.alibaba:druid-spring-boot-3-starter:${druidVersion}"
+
+    runtimeOnly "org.babyfish.jimmer:jimmer-client-swagger:${jimmerVersion}"
+
+}
+
+springBoot {
+    mainClass = 'cloud.hret.App'
+}
+
+bootJar {
+    archiveBaseName = 'hret-jimmer'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'started', 'passed'
+    }
+}

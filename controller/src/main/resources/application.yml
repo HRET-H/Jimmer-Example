@@ -1,0 +1,39 @@
+server:
+  port: 6666
+
+
+spring:
+  application:
+    name: hret-jimmer
+  profiles:
+    #默认为开发环境
+    active: dev
+#    active: prod
+
+jimmer:
+  dialect: org.babyfish.jimmer.sql.dialect.MySqlDialect
+  show-sql: true
+  pretty-sql: true
+  inline-sql-variables: true
+  executor-context-prefixes:
+    - cloud.hret
+  database-validation-mode: ERROR
+  client:
+    openapi:
+      path: /openapi.yml
+      ui-path: /openapi.html
+      properties:
+        info:
+          title: "Jimmer 示例文档"
+          version: 1.0
+          description: "Jimmer 示例文档"
+        securities:
+          - authHeader: [ ]
+        components:
+          securitySchemes:
+            authHeader:
+              type: apiKey
+              name: Authorization
+              in: HEADER
+  is-foreign-key-enabled-by-default: false
+  offset-optimizing-threshold: 0

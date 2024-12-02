@@ -1,0 +1,16 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api project(":model")
+    api "org.babyfish.jimmer:jimmer-spring-boot-starter:${jimmerVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}

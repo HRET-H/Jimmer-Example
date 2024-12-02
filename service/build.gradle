@@ -1,0 +1,31 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // 引入 repository 模块
+    api project(":repository")
+
+    // 添加 lombok APT
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+
+    runtimeOnly "mysql:mysql-connector-java:${mysqlVersion}"
+    runtimeOnly "org.springframework.boot:spring-boot-starter-data-redis:${redisVersion}"
+    runtimeOnly "org.apache.commons:commons-pool2:${commonsPool2Version}"
+    runtimeOnly "org.springframework.session:spring-session-data-redis:${springSessionRedisVersion}"
+
+    api "org.babyfish.jimmer:jimmer-spring-boot-starter:${jimmerVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}

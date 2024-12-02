@@ -1,0 +1,6 @@
+rootProject.name = 'jimmer-example'
+include 'model'
+include 'repository'
+include 'service'
+include 'controller'
+
